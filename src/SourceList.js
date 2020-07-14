@@ -22,11 +22,14 @@ export default class List extends React.Component {
 	render() {
 		const channelList = this.state.data.map((channel) => {
 			return (
-				<div>
-					<p key={channel.id}>{channel.id}</p>
-				</div>
+				<tbody>
+					<tr>
+						<th key={channel.id}>{channel.id}</th>
+						<th>{channel.name}</th>
+					</tr>
+				</tbody>
 			);
 		});
-		return <div>{channelList}</div>;
+		return <table>{channelList}</table>;
 	}
 }
