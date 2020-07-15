@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import List from './SourceList'
-import News from './News'
+import News from './components/News'
 import Content from './Content'
 import axios from 'axios'
 import './App.css';
@@ -35,7 +35,7 @@ function App() {
 
   ////change page
    const paginate = (number)=> setcurrentPage(number);
-   const channelName = (source)=> setChannelUrl(source.url);
+   const channelName = (channels)=> setChannelUrl(channels.url);
   console.log(ChannelId)
   return (
     <div class="row">
@@ -45,7 +45,7 @@ function App() {
         <Pagination channelsPerPage={channelsPerPage} totalChannels={channels.length} paginate={paginate}/>
       </div>
       <div className="col-md-4">
-        <News />
+        <News channelId={ChannelId}/>
       </div>
       <div className="col-md-4">
         <Content />
