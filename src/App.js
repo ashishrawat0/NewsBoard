@@ -11,8 +11,8 @@ import Pagination from './components/Pagination'
 function App() {
   const [channels, setChannel] = useState([]);
   const [loading, setLoading] = useState([]);
-  const [currentPage, setcurrentPage] = useState([1])
-  const [channelsPerPage, setChannelsPerPage] = useState(10);
+  const [currentPage, setcurrentPage] = useState(1);
+  const [channelsPerPage] = useState(10);
 
   useEffect(() => {
     const fetchChannel = async () => {
@@ -24,20 +24,23 @@ function App() {
     fetchChannel()
   }, []);
 
-  console.log(channels.length)
   ///PAGENATION///
 
   const indexOfLastChannel=channelsPerPage*currentPage
   const indexofFirstChannel=indexOfLastChannel-channelsPerPage
   const currentChannel=channels.slice(indexofFirstChannel,indexOfLastChannel)
 
+  /////////////////////////////
+
+  ////change page
+   const paginate = (number)=> setcurrentPage(number)
 
   return (
     <div class="row">
       <div className="col-md-4 mt-2">
         <h2 className="tex-primary">News Channels</h2>
         <Channels channels={currentChannel} loading={loading} />
-        <Pagination channelsPerPage={channelsPerPage} totalChannels={channels.length} />
+        <Pagination channelsPerPage={channelsPerPage} totalChannels={channels.length} paginate={paginate}/>
       </div>
       <div className="col-md-4">
         <News />
