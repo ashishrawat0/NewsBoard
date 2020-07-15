@@ -18,7 +18,7 @@ function App() {
   useEffect(() => {
     const fetchChannel = async () => {
       setLoading(true);
-      const res = await axios.get("https://newsapi.org/v2/sources?apiKey=2c27260665d5434cb5c68ead5b2e3cb9")
+      const res = await axios.get("https://newsapi.org/v2/sources?apiKey=6bd739815b4b407dbb9ea58f67fe8e1a")
       setChannel(res.data.sources);
       setLoading(false)
     }

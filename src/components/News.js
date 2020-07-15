@@ -3,21 +3,18 @@ import axios from 'axios'
 
 function News({ channelId }) {
 
-    const [loading, setLoading] = useState([]);
-    const [news,setNews]=useState([]);
-    useEffect(() => {
-        if(channelId!=undefined){
-        const fetchChannel = async () => {
-          setLoading(true);
-          const res = await axios.get(`https://newsapi.org/v2/everything?domains=${channelId}&apiKey=2c27260665d5434cb5c68ead5b2e3cb9`)
-          setNews(res);
-          setLoading(false)
-        }
-        
-        fetchChannel()
+    const [loading, setLoading] = useState(true);
+    const [news, setNews] = useState('');
+    const fetchChannel = async (channelId) => {
+        const domain=channelId.replace('http://','').replace('https://','').replace('www.','')
+        console.log(domain)
+        const res = await axios.get(`https://newsapi.org/v2/everything?domains=${domain}&apiKey=6bd739815b4b407dbb9ea58f67fe8e1a`)
+        setNews(res);
+        setLoading(false);
     }
-      }, []);
-
+    if (channelId && loading==true) {
+        fetchChannel(channelId)
+        }
     console.log(news)
     return (
         <div>
