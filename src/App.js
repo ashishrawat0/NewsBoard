@@ -13,6 +13,7 @@ function App() {
   const [loading, setLoading] = useState([]);
   const [currentPage, setcurrentPage] = useState(1);
   const [channelsPerPage] = useState(10);
+  const [ChannelId,setChannelUrl]= useState();
 
   useEffect(() => {
     const fetchChannel = async () => {
@@ -33,13 +34,14 @@ function App() {
   /////////////////////////////
 
   ////change page
-   const paginate = (number)=> setcurrentPage(number)
-
+   const paginate = (number)=> setcurrentPage(number);
+   const channelName = (source)=> setChannelUrl(source.url);
+  console.log(ChannelId)
   return (
     <div class="row">
       <div className="col-md-4 mt-2">
         <h2 className="tex-primary">News Channels</h2>
-        <Channels channels={currentChannel} loading={loading} />
+        <Channels channels={currentChannel} loading={loading} channelName={channelName} />
         <Pagination channelsPerPage={channelsPerPage} totalChannels={channels.length} paginate={paginate}/>
       </div>
       <div className="col-md-4">

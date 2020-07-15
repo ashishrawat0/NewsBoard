@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Channels =  ({channels,loading}) =>{
+const Channels =  ({channels,loading,channelName}) =>{
     if(loading){
         return(
             <div>
@@ -11,7 +11,10 @@ const Channels =  ({channels,loading}) =>{
     return(
         <ul className="list-group mb-4">
             {channels.map(channels=>(
-                <li key={channels.id} className="list-group-item">{channels.name}</li>
+        
+                <li key={channels.id} className="list-group-item">
+                    <a onClick={()=> channelName(channels)}>{channels.name}</a>
+                </li>
             ))}
         </ul>
     )
