@@ -1,5 +1,5 @@
 import React from 'react'
-
+import ListGroup from 'react-bootstrap/ListGroup'
 const Channels =  ({channels,loading,channelName}) =>{
     if(loading){
         return(
@@ -9,14 +9,13 @@ const Channels =  ({channels,loading,channelName}) =>{
         )
     }
     return(
-        <ul className="list-group mb-4">
+        < ListGroup active as ="ul">
             {channels.map(channels=>(
-        
-                <li key={channels.id} className="list-group-item">
+                <ListGroup.Item as="li"  key={channels.id}>
                     <a onClick={()=> channelName(channels)}>{channels.name}</a>
-                </li>
+                </ListGroup.Item>
             ))}
-        </ul>
+        </ ListGroup>
     )
 }
 

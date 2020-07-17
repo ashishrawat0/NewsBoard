@@ -2,12 +2,14 @@ import React from "react"
 
 const Pagination = ({ ChannelsPerPage, totalChannels, paginate}) => {
     const pageNumbers = [];
+    const liStyle={"width":'30px'}
 
-    for (let i = 1; i <= Math.ceil(totalChannels / 10); i++) {
+    for (let i = 1; i <= Math.ceil(totalChannels / 11); i++) {
         pageNumbers.push(i)
     }
-    return (        
-        <nav>
+    return ( 
+        <div>       
+        <nav style={liStyle}>
             <ul className="pagination">
                 {pageNumbers.map(number => (
                     <li key={number} className="page-item">
@@ -18,6 +20,7 @@ const Pagination = ({ ChannelsPerPage, totalChannels, paginate}) => {
                 ))}
             </ul>
         </nav>
+        </div>
     )
 }
 
