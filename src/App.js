@@ -1,20 +1,31 @@
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
-import List from './SourceList'
+import axios from 'axios'
 import News from './components/News'
 import Content from './components/Content'
-import axios from 'axios'
 import './App.css';
 import Channels from './components/Channels'
 import Pagination from './components/Pagination'
-import { SourceProvider } from './SourceContext'
+import { SourceProvider } from './Context/SourceContext'
 function App() {
 
-  const [ChannelId, setChannelUrl] = useState();
   const [newsRes, setNews] = useState();
   const [newsChannel, setName] = useState();
   const [pageNumber,setcurrentPage] =useState();
   const check = true;
+  const [news, setNewsDetails] = useState();
+
+
+
+  /////// fetch news details///
+
+  const fetchChannel = async (channels) => {
+    const domain = channels.url.replace('http://', '').replace('https://', '').replace('www.', '')
+    const res = await axios.get(`https://newsapi.org/v2/everything?domains=${domain}&apiKey=fc62c650d19b4e3186cad1cc396ef847`)
+    setNewsDetails(res.data.articles)
+    setName(channels.id);
+}
+
+
 
   ////change page/////
 
@@ -23,8 +34,8 @@ function App() {
   }
 
   const channelName = (channels) => {
-    setChannelUrl(channels.url);
     setName(channels.id);
+    console.log("seting the channel")
   }
 
   /////News Data /////
@@ -39,15 +50,15 @@ function App() {
 
   return (
     <div class="row">
-      <div className="col-md-4 mt-2" style={divStyle}>
-        <h2 className="text-primary">News Channels</h2>
+      <div className="col-md-4 mt-2"  style={divStyle}>
+        <h2 className="text-primary" style={{textAlign:"center"}}>News Channels</h2>
         <SourceProvider pageNumber={pageNumber}>
-        <Channels channelName={channelName}></Channels>
+        <Channels fetchChannel={fetchChannel}></Channels>
         <Pagination  paginate={paginate} />
         </SourceProvider>
       </div>
       <div className="col-md-4">
-        <News channelId={ChannelId} l={check} newsData={newsData} />
+        <News news={news} l={check} newsData={newsData} />
       </div>
       <div className="col-md-4">
         <Content newsRes={newsRes} newsChannel={newsChannel} />

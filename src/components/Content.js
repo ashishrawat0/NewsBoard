@@ -8,11 +8,10 @@ const Content = ({ newsRes, newsChannel }) => {
     }
     return (
         <div>
-            <div className="mt-4">Content</div>
-            <div className="mt-2">
+            <div className="mt-5">
                 <Card>
                     <Card.Body>
-                        <Card.Title>{newsRes.title}</Card.Title>
+                        <Card.Title className="mt-1">{newsRes.title}</Card.Title>
                         <Card.Img variant="top" src={newsRes.urlToImage} />
                         <Card.Text className="mt-2">
                             {newsRes.description}

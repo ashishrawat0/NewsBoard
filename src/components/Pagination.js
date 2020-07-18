@@ -1,5 +1,5 @@
 import React, {useContext} from "react"
-import {SourceContext} from '../SourceContext' 
+import {SourceContext} from '../Context/SourceContext' 
 
 const Pagination = ({  paginate}) => {
     const {value,value1} = useContext(SourceContext)
@@ -15,7 +15,7 @@ const Pagination = ({  paginate}) => {
     return ( 
         <div>       
         <nav style={liStyle}>
-            <ul className="pagination">
+            <ul className="pagination list-group-flush">
                 {pageNumbers.map(number => (
                     <li key={number} className="page-item">
                         <a onClick={()=> paginate(number)} className="page-link">
