@@ -23,11 +23,11 @@ function News({ news, newsData }) {
         return (
             <div className="mt-2">
                 <div className="row">
-                    <h2 className="text-primary ml-5">{news[0].source.name}</h2>
+                    <h2 style={{ fontFamily: 'serif' }} className="text-primary ml-5">{news[0].source.name}</h2>
                 </div>
                 <div className="list-group list-group-flush">
                     {news.map(news => (
-                        <a className="list-group-item list-group-item-action" onClick={() => { newsData(news); }}>{news.title}</a>
+                        <a activeClassName="active" className="list-group-item list-group-item-action" onClick={() => { newsData(news); }}>{news.title}</a>
                     ))}
                 </div>
             </div>

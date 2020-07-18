@@ -51,7 +51,7 @@ function App() {
   return (
     <div class="row">
       <div className="col-md-4 mt-2"  style={divStyle}>
-        <h2 className="text-primary" style={{textAlign:"center"}}>News Channels</h2>
+        <h2 className="text-primary" style={{textAlign:"center",fontFamily:'serif'}}>News Channels</h2>
         <SourceProvider pageNumber={pageNumber}>
         <Channels fetchChannel={fetchChannel}></Channels>
         <Pagination  paginate={paginate} />

@@ -9,7 +9,7 @@ const Content = ({ newsRes, newsChannel }) => {
     return (
         <div>
             <div className="mt-5">
-                <Card>
+                <Card style={{border:'none'}}>
                     <Card.Body>
                         <Card.Title className="mt-1">{newsRes.title}</Card.Title>
                         <Card.Img variant="top" src={newsRes.urlToImage} />

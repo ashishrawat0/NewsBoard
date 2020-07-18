@@ -1,5 +1,4 @@
 import React, { useReducer, useContext, useState } from 'react'
-import ListGroup from 'react-bootstrap/ListGroup'
 import { SourceContext } from '../Context/SourceContext'
 
 const Channels = ({ fetchChannel }) => {
