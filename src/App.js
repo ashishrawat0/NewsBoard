@@ -9,48 +9,34 @@ import Channels from './components/Channels'
 import Pagination from './components/Pagination'
 import { SourceProvider } from './SourceContext'
 function App() {
-  const [channels, setChannel] = useState([]);
-  const [loading, setLoading] = useState([]);
 
   const [ChannelId, setChannelUrl] = useState();
   const [newsRes, setNews] = useState();
   const [newsChannel, setName] = useState();
   const [pageNumber,setcurrentPage] =useState();
-  // useEffect(() => {
-  //   const fetchChannel = async () => {
-  //     setLoading(true);
-  //     const res = await axios.get("https://newsapi.org/v2/sources?apiKey=fc62c650d19b4e3186cad1cc396ef847")
-  //     setChannel(res.data.sources);
-  //     setLoading(false);
-  //   }
-  //   fetchChannel();
-  // }, []);
-
-  //PAGENATION///
-
-
   const check = true;
 
-  /////////////////////////////
-
-
-  ////change page
+  ////change page/////
 
   const paginate = (number) => {
     setcurrentPage(number);
   }
+
   const channelName = (channels) => {
     setChannelUrl(channels.url);
     setName(channels.id);
   }
 
-  /////News Data
+  /////News Data /////
 
   const newsData = (news) => setNews(news);
+
+  ///// Div Style ////
 
   const divStyle = {
     display: 'flex-container',
   }
+
   return (
     <div class="row">
       <div className="col-md-4 mt-2" style={divStyle}>
@@ -59,9 +45,6 @@ function App() {
         <Channels channelName={channelName}></Channels>
         <Pagination  paginate={paginate} />
         </SourceProvider>
-        <div>
-
-        </div>
       </div>
       <div className="col-md-4">
         <News channelId={ChannelId} l={check} newsData={newsData} />
