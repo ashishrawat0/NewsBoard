@@ -2,7 +2,7 @@ import React, {useContext} from "react"
 import {SourceContext} from '../Context/SourceContext' 
 
 const Pagination = ({  paginate}) => {
-    const {value,value1} = useContext(SourceContext)
+    const {value} = useContext(SourceContext)
 
     const [channels,SetChannel] = value
     const totalChannels=channels.length

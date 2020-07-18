@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'
+import ModalDialog from 'react-bootstrap/ModalDialog'
 import Alert from 'react-bootstrap/Alert'
 function News({ news, newsData }) {
     console.log(news)
