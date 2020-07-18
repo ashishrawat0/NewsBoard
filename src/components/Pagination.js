@@ -1,11 +1,16 @@
-import React from "react"
+import React, {useContext} from "react"
+import {SourceContext} from '../SourceContext' 
 
-const Pagination = ({ ChannelsPerPage, totalChannels, paginate}) => {
+const Pagination = ({  paginate}) => {
+    const {value,value1} = useContext(SourceContext)
+
+    const [channels,SetChannel] = value
+    const totalChannels=channels.length
     const pageNumbers = [];
     const liStyle={"width":'30px'}
 
     for (let i = 1; i <= Math.ceil(totalChannels / 11); i++) {
-        pageNumbers.push(i)
+        pageNumbers.push(i) 
     }
     return ( 
         <div>       
