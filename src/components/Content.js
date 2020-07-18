@@ -12,7 +12,7 @@ const Content = ({ newsRes, newsChannel }) => {
                 <Card style={{border:'none'}}>
                     <Card.Body>
                         <Card.Title className="mt-1">{newsRes.title}</Card.Title>
-                        <Card.Img variant="top" src={newsRes.urlToImage} />
+                        <Card.Img variant="top" src={newsRes.urlToImage} alt="Image not found"/>
                         <Card.Text className="mt-2">
                             {newsRes.description}
                         </Card.Text>
