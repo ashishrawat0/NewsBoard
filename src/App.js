@@ -58,7 +58,6 @@ function App() {
   };
   const newsData = (news) => {
     const allChannels = selectedChannels;
-    console.log(news);
     allChannels.push(news.source.id);
     setSelected(allChannels);
     setNews(news);

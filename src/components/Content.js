@@ -1,10 +1,12 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
-const Content = ({ newsRes }) => {
-  if (newsRes == undefined) {
+const Content = ({ newsRes, selectedChannels, newsChannel }) => {
+  if (
+    newsRes == undefined ||
+    selectedChannels.includes(newsRes.source.id) == false
+  ) {
     return <div></div>;
   }
-
   return (
     <div>
       <div className="mt-5">
